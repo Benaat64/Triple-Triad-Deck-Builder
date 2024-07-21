@@ -38,6 +38,9 @@ const deckController = {
         return response.status(404).send('Erreur 404 - Cette card n\'existe pas');
       }
       
+      if (request.session.decks.length >= 5) {
+        return response.status(400).send('Erreur - Vous ne pouvez pas avoir plus de 5 cartes');
+      }
       request.session.decks.push(card);
       response.redirect('/deck');
     },
