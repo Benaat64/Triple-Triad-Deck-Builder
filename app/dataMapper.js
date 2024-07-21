@@ -39,6 +39,12 @@ const dataMapper = {
     const result = await client.query(query,value);
     return result.rows
   },
+  async getName(name) {
+    const query ='SELECT * FROM card WHERE name = $1'
+    const value = [name]
+    const result = await client.query(query,value);
+    return result.rows[0];
+  }
 
 };
 

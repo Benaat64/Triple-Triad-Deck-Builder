@@ -52,7 +52,18 @@ const searchController = {
       console.log(error)
       res.status(500).send(`oupsi je suis trop nul`);
     }
+  },
+  namePage: async (req, res) => {
+    try {
+      const name = req.query.name;
+      const card = await dataMapper.getName(name);
+      res.render('name', {card});
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(`Erreur : ${error.message}`);
+    }
   }
+
 };
 
 module.exports = searchController;
