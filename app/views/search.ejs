@@ -54,4 +54,9 @@
   <input type="submit" value="Chercher">
 </form>
 
+<% if(cards){ %>
+<%- include('element') %>
+<%- include('level') %>
+<%- include('value') %>
+<% }%>
 <%- include('footer') %>

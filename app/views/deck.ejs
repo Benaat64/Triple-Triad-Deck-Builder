@@ -1,0 +1,18 @@
+<%- include('header') %>
+
+<div class="cardsContainer">
+    <% decks.forEach( (deck) => { %>
+  
+      <div class="card">
+        <a href="/card/<%=deck.id%>">
+          <img src="/visuals/<%= deck.visual_name %>" alt="<%= deck.name %> illustration">
+          <p class="cardName"><%= deck.name %></p>
+        </a>
+        <a class="link--deleteCard" title="Ajouter au deck" href="/deck/delete/<%=deck.id%>">[ - ]</a>
+        <a class="link--addCard" title="Ajouter au deck" href="/deck/add/<%=deck.id%>">[ + ]</a>
+      </div>
+  
+    <% }) %>
+  </div>
+
+<%- include('footer') %>
