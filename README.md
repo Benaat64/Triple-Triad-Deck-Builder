@@ -1,97 +1,87 @@
-# Atelier Solo : Triple Triad Deck Builder
+# Triple Triad Deck Builder
 
-Triple Triad est un jeu de plateau à base de cartes, inventé par SquareEnix et présent dans Final Fantasy 8.
+## Description
 
-Les règles sont plutôt simples, mais ce n'est pas ce qui nous intéresse aujourd'hui !
+Triple Triad Deck Builder est une application web développée dans le cadre d'un exercice pour gérer et organiser les cartes du jeu de plateau Triple Triad, introduit par SquareEnix dans Final Fantasy 8. L'objectif principal de cet exercice était de manipuler les données relatives aux cartes, de créer la base de données, et de mettre en place les fonctionnalités pour gérer les cartes et les decks en utilisant Node.js, Express, EJS, et PostgreSQL.
 
-On a récupéré toutes les données relatives aux cartes ainsi que leurs visuels. Et on voudrait construire une application pour gérer nos cartes, chercher des cartes selon plusieurs critères, et même gérer nos decks (= paquets de 5 cartes différentes).
+## Objectifs de l'Exercice
 
-## Étape 0 : Analyse du code fourni et mise en place
+- **Manipulation des Données** : Travailler avec les données des cartes et mettre en place les fonctionnalités de gestion de ces données.
+- **Création de la Base de Données** : Utiliser le fichier `data/create_db.sql` pour créer la base de données PostgreSQL nécessaire.
+- **Développement des Fonctionnalités** : Implémenter des fonctionnalités telles que la recherche de cartes, la gestion des decks, etc.
 
-Un stagiaire a déjà commencé à poser les bases de l'application. Sympa !
+## Technologies Utilisées
 
-Bon, niveau intégration c'est pas un champion... Mais c'est pas très important. Après tout, c'est un vieux jeu, on reste dans le thème _rétro_...
+- **Node.js** : Environnement d'exécution JavaScript pour le côté serveur.
+- **Express** : Framework web pour Node.js facilitant la gestion des routes et des requêtes HTTP.
+- **EJS** : Moteur de templates pour générer du HTML dynamique côté serveur.
+- **PostgreSQL** : Système de gestion de base de données relationnelle pour stocker les données des cartes et des decks.
 
-Analyse le code fourni pour comprendre ce qui a déjà été fait et voir ce que tu vas pouvoir réutiliser dans la suite.
+## Fonctionnalités Implémentées
 
-Ensuite, met en place la base de données à partir du fichier `data/create_db.sql`.
+1. **Détail d'une Carte**
+   - Affiche les informations complètes d'une carte lorsque l'on clique dessus depuis la page d'accueil.
 
-## Étape 1 : Détail d'une carte
+2. **Recherche de Cartes**
+   - Recherche des cartes par élément.
 
-Quand on clique sur une carte depuis la page d'accueil, on veut arriver sur la page "détail de la carte".
+3. **Construction de Deck**
+   - Permet de créer un deck de 5 cartes différentes.
+   - Ajouter des cartes au deck depuis la vue des cartes.
+   - Visualiser le deck actuel.
+   - Supprimer des cartes du deck.
 
-En terme d'intégration, fait comme tu veux, mais n'y passe pas trop de temps ! Reste simple, l'important est que les informations disponibles soient visibles.
+4. **Bonus**
+   - Recherche par niveau (exact).
+   - Recherche par valeur (au moins).
+   - Recherche par nom (contient).
 
-A toi de jouer !
-<details>
-<summary>Un peu d'aide...</summary>
+## Note sur le Design
 
-- Commence par écrire la requête pour récupérer les infos d'une carte, dans une nouvelle méthode `getCard` du `dataMapper`.
-- Code ensuite une nouvelle méthode dans un controller (`mainController`, ou un autre, fait ce qui te parait le plus logique !), qui :
-  - appelle `dataMapper.getCard` pour récupérer les informations de la carte demandée
-  - et les passe à une view `.ejs` (à créer) pour générer une page avec les informations.
-- Déclare ensuite une nouvelle `route paramétrée` qui pointe vers la nouvelle méthode du controller.
-- Enfin, remplace les `href` des liens des cartes sur la page d'acceuil, pour qu'ils pointent vers la nouvelle route.
-</details>
+Veuillez noter que le design de l'application n'a pas été réalisé dans le cadre de cet exercice. L'accent a été mis sur la manipulation des données, la création de la base de données et la mise en œuvre des fonctionnalités demandées.
 
-## Étape 2 : Recherche
+## ScreenShot
 
-Comme tu as pu le constater, le stagiaire a implémenté une view avec différents formulaires pour chercher des cartes. Pour l'instant la seule recherche qui m'interesse, c'est "par élément".
-À toi de finir le travail :muscle:
+## Installation
 
-<details>
-<summary>Au secours !</summary>
+### Prérequis
 
-- Suis les mêmes étapes qu'à l'étape 1 : construire la requete, puis la méthode dans le controller, puis la view _si besoin_, et enfin la route.
-- Utilise [req.query](http://expressjs.com/fr/api.html#req.query) pour accèder aux paramètres GET.
-- Garde [la fiche récap SQL](https://kourou.oclock.io/ressources/fiche-recap/le-langage-sql/) sous la main...
-- Attention, petit piège, lorsqu'on choisit "aucun" élément :imp:. Mais voilà [un peu d'aide](https://sql.sh/cours/where/is).
-</details>
+- Node.js
+- PostgreSQL
+- npm (ou yarn)
 
-## Étape 3 : Construire un deck
+### Cloner le Dépôt
 
-On veut pouvoir construire un deck de 5 cartes différentes.
+Clonez le dépôt sur votre machine locale :
 
-Pour ça, on va utiliser les sessions.
+```bash
+git clone https://github.com/Benaat64/Triple-Triad-Deck-Builder.git
+cd Triple-Triad-Deck-Builder
+```
+### Configuration de la Base de Données
+1. Créez la base de données PostgreSQL en utilisant le fichier data/create_db.sql :
+```bash
+psql -U [votre_utilisateur] -d [votre_base_de_donnees] -f data/create_db.sql
+```
+2. Configurez les paramètres de connexion à la base de données dans le fichier .env. Exemple de configuration .env :
+```bash
+DB_HOST=localhost
+DB_USER=your_username
+DB_PORT=5432
+DB_NAME=your_database_name
+DB_PASSWORD=your_password
+PORT=3000
+```
+### Installation des Dépendances
+Installez les dépendances du projet :
+```bash
+npm install
+```
+### Démarrer le Serveur
+Démarrez l'application :
+```bash
+npm start
+```
+## Utilisation
+Après avoir démarré le serveur, ouvrez votre navigateur et allez à l'adresse http://localhost:3000 (ou au port que vous avez configuré dans le fichier .env) pour voir le site en action.
 
-Et pour éviter de faire trop d'appels à la base de données, on va directement stocker toutes les données des cartes dans la session (et pas _juste_ les ID).
-
-### 3.1: Activer les sessions
-
-<details>
-<summary>A l'aideuh !</summary>
-
-- [Un petit tour sur npm](https://www.npmjs.com/package/express-session).
-- La correction des challenges de cette semaine _peut aider_. :wink:
-- 
-</details>
-
-### 3.2 Ajouter une carte au deck
-
-Les liens `[+]`, présents sur toutes les cartes, doivent ajouter la carte au deck de la session.
-
-**NOTE** : Si la carte est déjà présente dans le deck ou que le deck possède déjà 5 cartes, on ne fait rien !
-
-### 3.3 Une page pour visualiser le deck !
-
-Un lien vers la route `/deck` est déjà prévu dans la `nav`, mais je crois que le stagiaire n'a pas eu le temps de mettre la route en place, ni la view...
-
-### 3.4 Supprimer une carte du deck
-
-Sur la view de l'étape précédente, rajouter des liens pour supprimer chacune des cartes du deck.
-
-## Bonus: finir les recherches
-
-### Recherche par niveau
-
-On veut le niveau exact. Pas de "au moins".
-
-### Recherche par valeur
-
-On veut toutes les cartes qui ont _au moins_ la valeur choisie dans la direction sélectionnée.
-
-### Par nom
-
-On veut les cartes dont le nom contient la valeur entrée.
-
-Par exemple, chercher `ek` doit renvoyer "Sel*ek*" et "*Ek*arissor" (non sensible à la `case`).
