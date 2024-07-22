@@ -41,6 +41,15 @@ Triple Triad Deck Builder est une application web développée dans le cadre d'u
 Veuillez noter que le design de l'application n'a pas été réalisé dans le cadre de cet exercice. L'accent a été mis sur la manipulation des données, la création de la base de données et la mise en œuvre des fonctionnalités demandées.
 
 ## ScreenShot
+### AFFICHAGE DES CARTES
+![image](https://github.com/user-attachments/assets/fbf8d290-ed32-498a-af43-8c945ce5243b)
+
+### SEARCH
+![image](https://github.com/user-attachments/assets/acc9aebb-f520-4134-a55f-1d9a832dde3d)
+
+### DECK 
+![image](https://github.com/user-attachments/assets/edc71ef0-b81a-4dd0-a367-aac23bee33c0)
+
 
 ## Installation
 
